@@ -23,9 +23,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'xnwn)2j=f^(3&wu)+g@#ej@pyyit*rr7p0ie%acbq2)883zp5!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['QWYNG.pythonanywhere.com']
+ALLOWED_HOSTS = [
+    'QWYNG.pythonanywhere.com',
+    '127.0.0.1',
+    '*',
+]
 
 
 # Application definition
@@ -117,8 +121,13 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-
+STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
