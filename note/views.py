@@ -13,7 +13,7 @@ def form_test(request):
             form = MyForm(request.GET)
         if form.is_valid():
             summoner_name_data = form.cleaned_data['text'] # ← 受け取ったデータの正当性確認
-            watcher = RiotWatcher('RGAPI-666f39a3-d412-4403-ad4e-11fa5c6b659f')
+            watcher = RiotWatcher('RGAPI-73be3e94-aea7-4b3d-881a-cd87615280b9')
             my_region = 'jp1'
             me = watcher.summoner.by_name(my_region, summoner_name_data)
             my_ranked_stats = watcher.league.by_summoner(my_region, me['id'])
