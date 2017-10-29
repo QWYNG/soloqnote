@@ -13,20 +13,12 @@ def form_test(request):
             form = MyForm(request.GET)
         if form.is_valid():
             summoner_name_data = form.cleaned_data['text'] # ← 受け取ったデータの正当性確認
-            watcher = RiotWatcher('RGAPI-73be3e94-aea7-4b3d-881a-cd87615280b9')
+            watcher = RiotWatcher('RGAPI-55c1d19e-bbe9-4eb0-99c0-207875f6fef7')
             my_region = 'jp1'
             me = watcher.summoner.by_name(my_region, summoner_name_data)
-            my_ranked_stats = watcher.league.by_summoner(my_region, me['id'])
+            spectator = watcher.spectator.by_summoner(my_region, me['id'])
 
-            return render(request,'note/matchhistory_list.html',{'me': me, 'my_ranked_stats': my_ranked_stats,},)
+            return render(request,'note/matchhistory_list.html',{'me': me, 'spectator': spectator,},)
         else:  # ← methodが'POST'ではない = 最初のページ表示時の処理
             form = MyForm()
             return render(request, 'note/form.html', {'form': form,})
-
-def matchhistory_list(request):
-    watcher = RiotWatcher('RGAPI-e55e7d8d-2e50-4ea8-82f3-d5283c84b64d')
-    my_region = 'jp1'
-    me = watcher.summoner.by_name(my_region, 'アスペガイガー')
-    my_ranked_stats = watcher.league.by_summoner(my_region, me['id'])
-
-    return render(request,'note/matchhistory_list.html',{'me': me, 'my_ranked_stats': my_ranked_stats,},)
