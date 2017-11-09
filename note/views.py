@@ -12,13 +12,13 @@ def form_test(request):
         if request.method == "GET":
             form = MyForm(request.GET)
         if form.is_valid():
-            summoner_name_data = form.cleaned_data['text'] # ← 受け取ったデータの正当性確認
-            watcher = RiotWatcher('RGAPI-55c1d19e-bbe9-4eb0-99c0-207875f6fef7')
+            summoner_name_data = form.cleaned_data['text']
+            watcher = RiotWatcher('RGAPI-434613a8-af64-4d55-92bb-413233e233f3')
             my_region = 'jp1'
             me = watcher.summoner.by_name(my_region, summoner_name_data)
-            spectator = watcher.spectator.by_summoner(my_region, me['id'])
+            my_ranked_stats  = watcher.league.positions_by_summoner(my_region, me['id'])
 
-            return render(request,'note/matchhistory_list.html',{'me': me, 'spectator': spectator,},)
+            return render(request,'note/matchhistory_list.html',{'me': me, 'my_ranked_stats': my_ranked_stats,},)
         else:  # ← methodが'POST'ではない = 最初のページ表示時の処理
             form = MyForm()
             return render(request, 'note/form.html', {'form': form,})
