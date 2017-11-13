@@ -1,8 +1,23 @@
 {% extends "note/base.html" %}
 {% block content %}
-    <p>Hi there!</p>
-    {{me}}
-    <p>It works!</p>
+  <p>{{me.name}}さんこんちです<p>
+{% for ranked in my_ranked_stats %}
+    <p>アナタのランクは{{ranked.tier}} {{ranked.rank}}です<p>
+    <p>  LPは{{ranked.leaguePoints}}<p>
+      <p>勝利数は{{ranked.wins}} 敗北数は{{ranked.losses}}<p>
+        {% if ranked.wins > ranked.loses%}
+        <p>勝ち越していますね！すごい！<p>
+        {% elif ranked.wins == ranked.lose%}
+        <p>勝率はイーブンです　適正レート<p>
+        {% else %}
+        <p>負け越しています　ようこそ魔境へ<p>
+        {% endif %}
+        {% if ranked.hotStreak == True %}
+          <p>アナタは波にのっています！<p>
+        {% endif %}
+        {% if ranked.veteran %}
+          <p>あなたはこのリーグで100ゲーム以上プレイしています。<p>
+        {% endif %}
+{% endfor %}
 
-    {{my_ranked_stats}}
 {% endblock %}

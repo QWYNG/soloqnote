@@ -13,12 +13,14 @@ def form_test(request):
             form = MyForm(request.GET)
         if form.is_valid():
             summoner_name_data = form.cleaned_data['text']
-            watcher = RiotWatcher('RGAPI-434613a8-af64-4d55-92bb-413233e233f3')
+            watcher = RiotWatcher('RGAPI-ee54c73d-6709-4623-bd24-42346712bb4d')
             my_region = 'jp1'
             me = watcher.summoner.by_name(my_region, summoner_name_data)
             my_ranked_stats  = watcher.league.positions_by_summoner(my_region, me['id'])
-
-            return render(request,'note/matchhistory_list.html',{'me': me, 'my_ranked_stats': my_ranked_stats,},)
-        else:  # ← methodが'POST'ではない = 最初のページ表示時の処理
+            dict = {'my_ranked_stats': my_ranked_stats, 'me': me}
+            return render(request,'note/matchhistory_list.html',dict,)
+        else:
             form = MyForm()
             return render(request, 'note/form.html', {'form': form,})
+def custom_404(request):
+    return render(request, '404.html', {}, status=404)
