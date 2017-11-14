@@ -12,7 +12,7 @@ def form_test(request):
         if request.method == "GET":
             form = MyForm(request.GET)
         if form.is_valid():
-            summoner_name_data = form.cleaned_data['text']
+            summoner_name_data = form.cleaned_data['Summonername']
             watcher = RiotWatcher('RGAPI-ee54c73d-6709-4623-bd24-42346712bb4d')
             my_region = 'jp1'
             me = watcher.summoner.by_name(my_region, summoner_name_data)
