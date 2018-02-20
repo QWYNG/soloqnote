@@ -14,8 +14,8 @@ def form_test(request):
             form = MyForm(request.GET)
         if form.is_valid():
             summoner_name_g = form.cleaned_data['Summonername']
-            SNset_1 = SNset()
-            ranked_dict = SNset_1.lol(summoner_name_g)
+            SNset_1 = SNset()#  ここでクラスを呼び出してインスタンスを生成
+            ranked_dict = SNset_1.lol(summoner_name_g)#lolというメソッドをsummoner_name_gを引数として使用
             return render(request,'note/matchhistory_list.html',ranked_dict)
         else:
             form = MyForm()

@@ -12,5 +12,6 @@ class SNset():
         my_region = 'jp1'
         me = watcher.summoner.by_name(my_region, summoner_name_data)
         my_ranked_stats  = watcher.league.positions_by_summoner(my_region, me['id'])
-        dict = {'my_ranked_stats': my_ranked_stats[1], 'me': me}
+        for my_ranked_stat in my_ranked_stats:
+            dict = {'my_ranked_stat': my_ranked_stat, 'me': me}
         return (dict)
