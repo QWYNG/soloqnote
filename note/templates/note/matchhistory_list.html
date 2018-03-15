@@ -1,7 +1,9 @@
-{% extends "note/base.html" %}
+4{% extends "note/base.html" %}
 {% block content %}
   <p>{{me.name}}さんこんちです<p>
-  <p>{{me}}<p>
+  <p>{{match_detail}}<p>
+
+
 <p>{{my_ranked_stat}}<p>
     <p>アナタのランクは{{my_ranked_stat.tier}} {{my_ranked_stat.rank}}です<p>
     <p>  LPは{{my_ranked_stat.leaguePoints}}<p>
