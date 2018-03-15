@@ -1,10 +1,10 @@
-4{% extends "note/base.html" %}
+{% extends "note/base.html" %}
 {% block content %}
   <p>{{me.name}}さんこんちです<p>
-  <p>{{match_detail}}<p>
 
 
-<p>{{my_ranked_stat}}<p>
+
+
     <p>アナタのランクは{{my_ranked_stat.tier}} {{my_ranked_stat.rank}}です<p>
     <p>  LPは{{my_ranked_stat.leaguePoints}}<p>
       <p>勝利数は{{my_ranked_stat.wins}} 敗北数は{{my_ranked_stat.losses}}<p>
@@ -14,6 +14,6 @@
         {% if my_ranked_stat.veteran %}
           <p>あなたはこのリーグで100ゲーム以上プレイしています。<p>
         {% endif %}
-
+  <p>{{match_detail}}<p>
 
 {% endblock %}
