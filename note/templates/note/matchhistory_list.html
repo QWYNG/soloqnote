@@ -1,6 +1,6 @@
 {% extends "note/base.html" %}
 {% block content %}
-  <p>{{me.name}}さんこんちです<p>
+  <p>{{me.name}}さんこんにちは<p>
 
 
 
@@ -14,6 +14,7 @@
         {% if my_ranked_stat.veteran %}
           <p>あなたはこのリーグで100ゲーム以上プレイしています。<p>
         {% endif %}
+  <p>あなたの直近20試合のデータです<p>     
   <p>{{match_detail}}<p>
 
 {% endblock %}
