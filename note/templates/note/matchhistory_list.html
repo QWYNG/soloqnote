@@ -4,7 +4,6 @@
 
 
 
-
     <p>アナタのランクは{{my_ranked_stat.tier}} {{my_ranked_stat.rank}}です<p>
     <p>  LPは{{my_ranked_stat.leaguePoints}}<p>
       <p>勝利数は{{my_ranked_stat.wins}} 敗北数は{{my_ranked_stat.losses}}<p>
@@ -14,7 +13,20 @@
         {% if my_ranked_stat.veteran %}
           <p>あなたはこのリーグで100ゲーム以上プレイしています。<p>
         {% endif %}
-  <p>あなたの直近20試合のデータです<p>     
-  <p>{{match_detail}}<p>
+  <p>あなたの直近20試合のデータです<p>
+    {% for i in range %}
+    {% if match_detail.i.teams.0.win == 'Win' %}
 
+    <div style="padding: 10px; margin-bottom: 10px; border: 5px double #333333; border-radius: 10px; background-color: #0066ff; color: #ffffff;">
+      勝利
+    </div>
+    {% else %}
+    <div style="padding: 10px; margin-bottom: 10px; border: 5px double #333333; border-radius: 10px; background-color: #ff0800; color: #ffffff;">
+        敗北
+    </div>
+
+    {% endif %}
+    {% endfor %}
+  {{ participantId }}
+  {{ result }}
 {% endblock %}
