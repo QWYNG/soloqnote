@@ -14,19 +14,7 @@
           <p>あなたはこのリーグで100ゲーム以上プレイしています。<p>
         {% endif %}
   <p>あなたの直近20試合のデータです<p>
-    {% for i in range %}
-    {% if match_detail.i.teams.0.win == 'Win' %}
-
-    <div style="padding: 10px; margin-bottom: 10px; border: 5px double #333333; border-radius: 10px; background-color: #0066ff; color: #ffffff;">
-      勝利
-    </div>
-    {% else %}
-    <div style="padding: 10px; margin-bottom: 10px; border: 5px double #333333; border-radius: 10px; background-color: #ff0800; color: #ffffff;">
-        敗北
-    </div>
-
-    {% endif %}
-    {% endfor %}
+    {{ match_detail }}
   {{ participantId }}
   {{ result }}
 {% endblock %}
