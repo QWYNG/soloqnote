@@ -1,8 +1,5 @@
 from django.db import models
 from riotwatcher import RiotWatcher
-from requests import HTTPError
-import json
-import collections
 # Create your models here.
 class SNset():
 
