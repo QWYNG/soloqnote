@@ -1,20 +1,22 @@
-{% extends "note/base.html" %}
-{% block content %}
-  <p>{{me.name}}さんこんにちは<p>
+{% extends "note/base.html" %} {% block content %}
+<p>{{me.name}}さんこんにちは
+  <p>
 
 
 
-    <p>アナタのランクは{{my_ranked_stat.tier}} {{my_ranked_stat.rank}}です<p>
-    <p>  LPは{{my_ranked_stat.leaguePoints}}<p>
-      <p>勝利数は{{my_ranked_stat.wins}} 敗北数は{{my_ranked_stat.losses}}<p>
-        {% if my_ranked_stat.hotStreak == True %}
-          <p>アナタは波にのっています！<p>
-        {% endif %}
-        {% if my_ranked_stat.veteran %}
-          <p>あなたはこのリーグで100ゲーム以上プレイしています。<p>
-        {% endif %}
-  <p>あなたの直近20試合のデータです<p>
-    {{ match_detail }}
-  {{ participantId }}
-  {{ result }}
-{% endblock %}
+    <p>アナタのランクは{{my_ranked_stat.tier}} {{my_ranked_stat.rank}}です
+      <p>
+        <p> LPは{{my_ranked_stat.leaguePoints}}
+          <p>
+            <p>勝利数は{{my_ranked_stat.wins}} 敗北数は{{my_ranked_stat.losses}}
+              <p>
+                {% if my_ranked_stat.hotStreak == True %}
+                <p>アナタは波にのっています！
+                  <p>
+                    {% endif %} {% if my_ranked_stat.veteran %}
+                    <p>あなたはこのリーグで100ゲーム以上プレイしています。
+                      <p>
+                        {% endif %}
+                        <p>あなたの直近20試合のデータです
+                          <p>
+                            {{ match_detail }} {{ participantId }} {{ result }} {% endblock %}
