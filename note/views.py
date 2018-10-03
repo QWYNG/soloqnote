@@ -2,7 +2,6 @@ from django.shortcuts import render
 from riotwatcher import RiotWatcher
 from django.http import HttpResponse
 from requests import HTTPError
-from django.template.loader import render_to_string
 from .forms import MyForm
 from .models import Summoner
 # Create your views here.
